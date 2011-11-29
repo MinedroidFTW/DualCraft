@@ -1,8 +1,6 @@
-DualCraft is a MineCraft Classic and Beta Server Software built into one great package. With DualCraft you can run both
-a classic and beta server simultaneously without having two windows open at once. Currently we feature low extraordinary
-features, because of the great demand for an initial release.
+package dualcraft.org.server.classic.net.packet;
 
-License
+/*License
 ====================
 Copyright (c) 2010-2012 Daniel Vidmar
 
@@ -20,9 +18,63 @@ project"
 "Our developers reserver the right if they suspect a closed source software using any code from our project
 to request to overview the source code of the suspected software. If the owner of the suspected software refuses 
 to allow a devloper to overview the code then we shall/are granted the right to persue legal action against
-him/her"
+him/her"*/
 
-MISC
-====================
-Our license modifications may change and/or we may add more inwhich case we change/add to our modifications
-any redistribution of the project DualCraft in source or binary must also update the license as we do.
+/**
+ * Holds the different Minecraft data types.
+ * 
+ */
+public enum DataType {
+	
+	/**
+	 * Standard byte data type.
+	 */
+	BYTE(1),
+
+	/**
+	 * Standard short data type.
+	 */
+	SHORT(2),
+
+	/**
+	 * Standard integer data type.
+	 */
+	INT(4),
+
+	/**
+	 * Standard long data type.
+	 */
+	LONG(8),
+
+	/**
+	 * Fixed-length (1024) byte array data type.
+	 */
+	BYTE_ARRAY(1024),
+
+	/**
+	 * Fixed length (64 ASCII bytes) string data type.
+	 */
+	STRING(64);
+	
+	/**
+	 * The length of the data type, in bytes.
+	 */
+	private int length;
+	
+	/**
+	 * Creates the data type.
+	 * @param length
+	 */
+	private DataType(int length) {
+		this.length = length;
+	}
+	
+	/**
+	 * Gets the length of this data type.
+	 * @return The length, in bytes.
+	 */
+	public int getLength() {
+		return length;
+	}
+	
+}

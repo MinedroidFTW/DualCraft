@@ -1,8 +1,6 @@
-DualCraft is a MineCraft Classic and Beta Server Software built into one great package. With DualCraft you can run both
-a classic and beta server simultaneously without having two windows open at once. Currently we feature low extraordinary
-features, because of the great demand for an initial release.
+package dualcraft.org.server.classic.model;
 
-License
+/*License
 ====================
 Copyright (c) 2010-2012 Daniel Vidmar
 
@@ -20,9 +18,48 @@ project"
 "Our developers reserver the right if they suspect a closed source software using any code from our project
 to request to overview the source code of the suspected software. If the owner of the suspected software refuses 
 to allow a devloper to overview the code then we shall/are granted the right to persue legal action against
-him/her"
+him/her"*/
 
-MISC
-====================
-Our license modifications may change and/or we may add more inwhich case we change/add to our modifications
-any redistribution of the project DualCraft in source or binary must also update the license as we do.
+/**
+ * Represents a rotation in the game world.
+ * 
+ */
+public final class Rotation {
+	
+	/**
+	 * The rotation.
+	 */
+	private final int rotation;
+	
+	/**
+	 * The look.
+	 */
+	private final int look;
+	
+	/**
+	 * Creates the rotation.
+	 * @param rotation The rotation.
+	 * @param look The look value.
+	 */
+	public Rotation(int rotation, int look) {
+		this.rotation = rotation;
+		this.look = look;
+	}
+	
+	/**
+	 * Gets the rotation.
+	 * @return The rotation.
+	 */
+	public int getRotation() {
+		return rotation;
+	}
+	
+	/**
+	 * Gets the look value.
+	 * @return The look value.
+	 */
+	public int getLook() {
+		return look;
+	}
+	
+}

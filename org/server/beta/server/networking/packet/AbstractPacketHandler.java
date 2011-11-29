@@ -1,8 +1,4 @@
-DualCraft is a MineCraft Classic and Beta Server Software built into one great package. With DualCraft you can run both
-a classic and beta server simultaneously without having two windows open at once. Currently we feature low extraordinary
-features, because of the great demand for an initial release.
-
-License
+/*License
 ====================
 Copyright (c) 2010-2012 Daniel Vidmar
 
@@ -20,9 +16,34 @@ project"
 "Our developers reserver the right if they suspect a closed source software using any code from our project
 to request to overview the source code of the suspected software. If the owner of the suspected software refuses 
 to allow a devloper to overview the code then we shall/are granted the right to persue legal action against
-him/her"
+him/her"*/
+package dualcraft.org.server.beta.server.networking.packet;
 
-MISC
-====================
-Our license modifications may change and/or we may add more inwhich case we change/add to our modifications
-any redistribution of the project DualCraft in source or binary must also update the license as we do.
+import org.jboss.netty.channel.ChannelHandlerContext;
+
+/**
+ * An abstract class that defines a packet handler
+ * 
+ * 
+ * @version 1.0.0.0
+ */
+public abstract class AbstractPacketHandler {
+        
+    /**
+     * Gets the name of this packet handler
+     * 
+     * @return The name
+     * @since 0.9.0.0
+     */
+    public abstract String getName();
+    
+    /**
+     * Called when handling a packet
+     * 
+     * @param context The channel handler context
+     * @param packet The packet to handle
+     * @since 1.0.0.0
+     */
+    public abstract void handle(ChannelHandlerContext context, Packet packet);
+    
+}

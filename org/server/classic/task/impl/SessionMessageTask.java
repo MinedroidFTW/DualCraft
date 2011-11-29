@@ -1,8 +1,6 @@
-DualCraft is a MineCraft Classic and Beta Server Software built into one great package. With DualCraft you can run both
-a classic and beta server simultaneously without having two windows open at once. Currently we feature low extraordinary
-features, because of the great demand for an initial release.
+package dualcraft.org.server.classic.task.impl;
 
-License
+/*License
 ====================
 Copyright (c) 2010-2012 Daniel Vidmar
 
@@ -20,9 +18,42 @@ project"
 "Our developers reserver the right if they suspect a closed source software using any code from our project
 to request to overview the source code of the suspected software. If the owner of the suspected software refuses 
 to allow a devloper to overview the code then we shall/are granted the right to persue legal action against
-him/her"
+him/her"*/
 
-MISC
-====================
-Our license modifications may change and/or we may add more inwhich case we change/add to our modifications
-any redistribution of the project DualCraft in source or binary must also update the license as we do.
+import org.apache.mina.core.session.IoSession;
+import dualcraft.org.server.classic.net.MinecraftSession;
+import dualcraft.org.server.classic.net.packet.Packet;
+import dualcraft.org.server.classic.task.Task;
+
+/**
+ * A task which parses a packet received from a session.
+ * 
+ */
+public final class SessionMessageTask implements Task {
+	
+	/**
+	 * The session.
+	 */
+	private final IoSession session;
+	
+	/**
+	 * The packet.
+	 */
+	private final Packet packet;
+	
+	/**
+	 * Creates the session message task.
+	 * @param session The session.
+	 * @param packet The packet.
+	 */
+	public SessionMessageTask(IoSession session, Packet packet) {
+		this.session = session;
+		this.packet = packet;
+	}
+	
+	public void execute() {
+		assert(session.getAttribute("attachment") != null);
+		((MinecraftSession) session.getAttribute("attachment")).handle(packet);
+	}
+	
+}

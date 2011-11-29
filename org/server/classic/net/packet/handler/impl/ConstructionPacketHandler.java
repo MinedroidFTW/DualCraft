@@ -1,8 +1,6 @@
-DualCraft is a MineCraft Classic and Beta Server Software built into one great package. With DualCraft you can run both
-a classic and beta server simultaneously without having two windows open at once. Currently we feature low extraordinary
-features, because of the great demand for an initial release.
+package dualcraft.org.server.classic.net.packet.handler.impl;
 
-License
+/*License
 ====================
 Copyright (c) 2010-2012 Daniel Vidmar
 
@@ -20,9 +18,28 @@ project"
 "Our developers reserver the right if they suspect a closed source software using any code from our project
 to request to overview the source code of the suspected software. If the owner of the suspected software refuses 
 to allow a devloper to overview the code then we shall/are granted the right to persue legal action against
-him/her"
+him/her"*/
 
-MISC
-====================
-Our license modifications may change and/or we may add more inwhich case we change/add to our modifications
-any redistribution of the project DualCraft in source or binary must also update the license as we do.
+import dualcraft.org.server.classic.net.MinecraftSession;
+import dualcraft.org.server.classic.net.packet.Packet;
+import dualcraft.org.server.classic.net.packet.handler.PacketHandler;
+
+/**
+ * A packet handler which handles the construction packet.
+ * 
+ */
+public class ConstructionPacketHandler implements PacketHandler<MinecraftSession> {
+	
+	public void handlePacket(MinecraftSession session, Packet packet) {
+		if (!session.isAuthenticated()) {
+			return;
+		}
+		int x = packet.getNumericField("x").intValue();
+		int y = packet.getNumericField("y").intValue();
+		int z = packet.getNumericField("z").intValue();
+		int mode = packet.getNumericField("mode").intValue();
+		int type = packet.getNumericField("type").intValue();
+		session.getPlayer().getWorld().getGameMode().setBlock(session.getPlayer(), session.getPlayer().getWorld().getLevel(), x, y, z, mode, type);
+	}
+	
+}

@@ -1,8 +1,6 @@
-DualCraft is a MineCraft Classic and Beta Server Software built into one great package. With DualCraft you can run both
-a classic and beta server simultaneously without having two windows open at once. Currently we feature low extraordinary
-features, because of the great demand for an initial release.
+package dualcraft.org.server.classic.task;
 
-License
+/*License
 ====================
 Copyright (c) 2010-2012 Daniel Vidmar
 
@@ -20,9 +18,61 @@ project"
 "Our developers reserver the right if they suspect a closed source software using any code from our project
 to request to overview the source code of the suspected software. If the owner of the suspected software refuses 
 to allow a devloper to overview the code then we shall/are granted the right to persue legal action against
-him/her"
+him/her"*/
 
-MISC
-====================
-Our license modifications may change and/or we may add more inwhich case we change/add to our modifications
-any redistribution of the project DualCraft in source or binary must also update the license as we do.
+/**
+ * Represents a task which can be repeated multiple times and then stopoped.
+ * 
+ */
+public abstract class ScheduledTask implements Task {
+	
+	/**
+	 * The delay.
+	 */
+	private long delay;
+	
+	/**
+	 * Running flag.
+	 */
+	private boolean running = true;
+	
+	/**
+	 * Creates a scheduled task with the specific delay.
+	 * @param delay The delay.
+	 */
+	public ScheduledTask(long delay) {
+		this.delay = delay;
+	}
+	
+	/**
+	 * Gets the delay.
+	 * @return The delay.
+	 */
+	public long getDelay() {
+		return delay;
+	}
+	
+	/**
+	 * Sets the delay.
+	 * @param delay The delay.
+	 */
+	public void setDelay(long delay) {
+		this.delay = delay;
+	}
+	
+	/**
+	 * Checks the is running flag.
+	 * @return The is running flag.
+	 */
+	public boolean isRunning() {
+		return running;
+	}
+	
+	/**
+	 * Stops the server.
+	 */
+	public void stop() {
+		running = false;
+	}
+	
+}
